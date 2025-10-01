@@ -1,0 +1,21 @@
+# Configuration for generate_multi_library.py
+seed_library: 12345
+
+libraries:
+  - backbone_id: "A"
+    seq_type: "dna"
+    backbone_path: "data/backbone/backbone_A.fa"
+    positions_degeneracy:
+      - {pos: 10, chars: "N"}
+      - {pos: 25, chars: "R"}
+    n_sequences: 5000
+    start_weight: 1.0
+
+  - backbone_id: "B"
+    seq_type: "dna"
+    backbone_path: "data/backbone/backbone_B.fa"
+    positions_degeneracy:
+      - {pos: 8, chars: "AC"}
+      - {pos: 40, chars: "N"}
+    n_sequences: 5000
+    start_weight: 0.5

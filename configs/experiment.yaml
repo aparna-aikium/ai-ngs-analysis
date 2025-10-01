@@ -1,0 +1,57 @@
+# Unified experiment config: library (single or multi), selection, and ngs
+
+library:
+  mode: multi          # "single" or "multi"
+  seed_library: 12345
+
+  # One or more references. Works for both single or multi.
+  references:
+    - id: "A"
+      seq_type: dna
+      backbone_path: data/backbone/backbone_A.fa
+      positions_degeneracy:
+        - {pos: 10, chars: "N"}
+        - {pos: 25, chars: "R"}
+      n_sequences: 5000        # or "all"
+      start_weight: 1.0
+
+    - id: "B"
+      seq_type: dna
+      backbone_path: data/backbone/backbone_B.fa
+      positions_degeneracy:
+        - {pos: 8,  chars: "AC"}
+        - {pos: 40, chars: "N"}
+      n_sequences: 5000
+      start_weight: 0.5
+
+selection:
+  enabled: true                # turn off to skip selection stage
+  rounds: 3
+  display: yeast               # "mrna" | "yeast" | "yoda"
+  mode: competitive            # or "sequential"
+  targets:
+    - name: T1
+      concentration_nM: 50
+      weight: 1.0
+  stringency:
+    S: 0.7
+  pcr:
+    cycles: 10
+    bias_sigma: 0.3
+  expression:
+    enabled: true
+    sigma: 0.5
+  KD_model:
+    mu_log10KD: -7.0
+    alpha: 1.0
+    sigma: 0.3
+  input_molecules_per_round: 200000
+  seed_selection: 4242
+
+ngs:
+  enabled: true                # turn off to skip NGS stage
+  source: true_library         # "selection_round" or "true_library"
+  selection_round_index: 3     # used if source == selection_round
+  reads_total: 100000
+  p_error: 0.001
+  seed_sim: 999

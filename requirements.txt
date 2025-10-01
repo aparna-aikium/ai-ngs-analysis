@@ -1,0 +1,6 @@
+streamlit
+pandas
+matplotlib
+numpy
+pyyaml
+ai-ngs-analysis @ git+https://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@github.com/aparna-aikium/ai-ngs-analysis.git@main

@@ -1,0 +1,8 @@
+{
+  "preset": "--very-sensitive",
+  "N": 0,
+  "L": 20,
+  "i": "S,1,0.75",
+  "score_min": "L,-0.6,-0.6",
+  "mapq_min": 10
+}
